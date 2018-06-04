@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <context id="prod">
+        <!-- RowBounds pagination -->
+        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin" />
+        <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin" />
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+
+        <commentGenerator type="com.bluepay.mytatis.generator.DefaultCommentGenerator">
+            <property name="suppressDate" value="true" />
+            <property name="suppressAllComments" value="false" />
+        </commentGenerator>
+
+        <!-- jdbc连接 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://192.168.4.238:21406/blue_pay_plus" userId="bluepay"
+                        password="CcTsCtbT0DF6yePeMjkNbuNfJxFQDb4a" >
+            <property name="useInformationSchema" value="true"></property>
+        </jdbcConnection>
+
+        <javaModelGenerator targetPackage="com.bluepay.model"
+                            targetProject="model/src/main/java">
+            <!-- 是否针对string类型的字段在set的时候进行trim调用 -->
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+       <!-- <sqlMapGenerator targetPackage="mappers" targetProject="src/main/java" />
+      <javaClientGenerator targetPackage="com.bluepay.wallet.message.center.dao"
+                             targetProject="src/main/java" type="ANNOTATEDMAPPER" />-->
+
+        <table schema="" tableName="user_info" domainObjectName="UserInfo"/>
+    </context>
+</generatorConfiguration>
